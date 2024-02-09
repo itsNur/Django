@@ -1,5 +1,15 @@
 from django.contrib import admin
-from .models import Task
+from .models import Command, Participant
 
 
-admin.site.register(Task)
+class ParticipantInline(admin.StackedInline):
+    model = Participant
+    extra = 1
+
+
+class CommandAdmin(admin.ModelAdmin):
+    inlines = [ParticipantInline]
+
+
+admin.site.register(Command, CommandAdmin)
+admin.site.register(Participant)
