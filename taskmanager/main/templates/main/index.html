@@ -5,11 +5,22 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Главная страница</h1>
-    {% for el in tasks %}
-        <div>
-            <h3>{{ el.title }}</h3>
-            <p>{{ el.task }}</p>
-        </div>
-    {% endfor %}
+    <h1>Commands</h1>
+    {% if teams %}
+        {% for el in teams %}
+            <div class="alert alert-warning mt-2">
+                <h3>{{ el.name }}</h3>
+                <p>{{ el.description }}</p>
+            </div>
+        {% endfor %}
+        <h1>Participants</h1>
+            {% for el in teammates %}
+                <div class="alert alert-warning mt-2">
+                    <h3>{{ el.name }}</h3>
+                    <p>{{ el.command }}</p>
+                </div>
+            {% endfor %}
+    {% else %}
+        <p>У нас нет команд!</p>
+    {% endif %}
 {% endblock %}

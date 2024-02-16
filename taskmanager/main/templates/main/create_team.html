@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Создать команду
+{% endblock %}
+
+{% block content %}
+    <h1>Создать команду</h1>
+    <form method="post">
+        <input type="text" placeholder="Введите название" class="form-control"><br>
+        <textarea placeholder="Введите описание" class="form-control"></textarea><br>
+        <button type="submit" class="btn btn-success">Добавить</button>
+    </form>
+{% endblock %}
