@@ -3,19 +3,23 @@ from .models import Command, Participant
 from django.views import View
 
 
-def index(request):
-    teams = Command.objects.order_by('-id')
-    teammates = Participant.objects.all()
-    return render(request, 'main/index.html', {'title': 'Главная страница сайта', 'teams': teams, 'teammates': teammates})
+class IndexView(View):
+    def get(self, request):
+        teams = Command.objects.all()
+        teammates = Participant.objects.all()
+        return render(request, 'main/index.html', {'title': 'главная страница сайта', 'teams': teams, 'teammates': teammates})
 
 
-def about(request):
-    return render(request, 'main/about.html')
+class AboutView(View):
+    def get(self, request):
+        return render(request, 'main/about.html')
 
 
-def create_team(request):
-    return render(request, 'main/create_team.html')
+class CreateTeamView(View):
+    def get(self, request):
+        return render(request, 'main/create_team.html')
 
 
-def create_teammate(request):
-    return render(request, 'main/create_teammate.html')
+class CreateTeammateView(View):
+    def get(self, request):
+        return render(request, 'main/create_teammate.html')
