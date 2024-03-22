@@ -7,6 +7,9 @@
 {% block content %}
     <h1>Добавить участника</h1>
     <form method="post">
+        {% csrf_token %}
+        {{ form.name }}
+        {{ form.command }}
         <input type="text" placeholder="Введите имя" class="form-control"><br>
         <button type="submit" class="btn btn-success">Добавить</button>
     </form>

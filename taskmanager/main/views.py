@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Command, Participant
 from django.views import View
+from .forms import CommandForm, ParticipantForm
 
 
 class IndexView(View):
@@ -17,9 +18,13 @@ class AboutView(View):
 
 class CreateTeamView(View):
     def get(self, request):
+        team_form = CommandForm()
+        context = {'form': team_form}
         return render(request, 'main/create_team.html')
 
 
 class CreateTeammateView(View):
     def get(self, request):
+        teammate_form = ParticipantForm()
+        context = {'form': teammate_form}
         return render(request, 'main/create_teammate.html')
